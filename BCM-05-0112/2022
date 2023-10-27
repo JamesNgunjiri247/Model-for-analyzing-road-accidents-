@@ -1,0 +1,22 @@
+# Load the saved model
+import joblib
+model = joblib.load('linear_regression_model.pkl')
+
+# Define a new data point with independent variables
+new_data = {'driver_age': 35,
+            'driver_experience': 10,
+            'vehicle_type': 'car',
+            'service_year': 5,
+            'road_type': 'asphalt',
+            'weather_condition': 'clear',
+            'light_condition': 'daylight',
+            'day': 'Monday'}
+
+# Convert the categorical variables into dummy variables
+new_data = pd.get_dummies(new_data)
+
+# Make a prediction using the model
+prediction = model.predict(new_data)
+
+# Print the prediction
+print(f'The predicted accident severity is {prediction}')
